@@ -1,8 +1,40 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css"href="default.css">
+        <script type="text/javascript">
+            $(document).ready(function(e){
+                $.getJSON("https://www.googleapis.com/books/v1/volumes?q=tech", function(json){
+                    $.each(json.items, function(i, item){
+                        // alert(item.volumeInfo.imageLinks.smallThumbnail);
+                        $("#table tr").append("<td><img src='" + item.volumeInfo.imageLinks.smallThumbnail + "' /></td>");
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
+        <header class="header-bg">
+            <div class="container">
+                <h6>Assemble Books</h6>
+            </div>
+        </header>
 
+        <div class="container">
+            <h3>Books</h3>
+            <table id="table" class="table">
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
